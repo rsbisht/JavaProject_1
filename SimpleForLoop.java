@@ -2,7 +2,7 @@ public class SimpleForLoop {
 
    public static void main(String[] args) {
 
-       for (int i = 1; i <= 15; i++) {
+       for (int i = 1; i <= 12; i++) {
 
            System.out.println("This is Line No.... " + i);
        }
