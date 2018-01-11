@@ -1,0 +1,11 @@
+Filesystem            Type      Size  Used Avail Use% Mounted on
+/dev/mapper/vg00-root xfs       110G   67G   44G  61% /
+devtmpfs              devtmpfs  7.8G     0  7.8G   0% /dev
+tmpfs                 tmpfs     7.8G  260K  7.8G   1% /dev/shm
+tmpfs                 tmpfs     7.8G   50M  7.8G   1% /run
+tmpfs                 tmpfs     7.8G     0  7.8G   0% /sys/fs/cgroup
+/dev/sda2             xfs      1014M  166M  849M  17% /boot
+tmpfs                 tmpfs     1.6G   20K  1.6G   1% /run/user/0
+tmpfs                 tmpfs     1.6G  4.0K  1.6G   1% /run/user/1002
+tmpfs                 tmpfs     1.6G   16K  1.6G   1% /run/user/1001
+tmpfs                 tmpfs     1.6G   16K  1.6G   1% /run/user/42
