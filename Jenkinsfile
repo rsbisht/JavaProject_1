@@ -46,7 +46,8 @@ node('Server_Group_1') {
 
 	    sh "echo Building the code..                                  >> ${env.JOB_NAME}.log"
 
-            ### sh 'export MAVEN_HOME=/opt/maven; cd ${WORKSPACE}; ${MAVEN_HOME}/bin/mvn clean install'
+            // sh 'export MAVEN_HOME=/opt/maven; cd ${WORKSPACE}; ${MAVEN_HOME}/bin/mvn clean install'
+
 	    sh "javac SimpleForLoop.java"
 	    sh "java SimpleForLoop                                        >> ${env.JOB_NAME}.log"
 
