@@ -12,10 +12,9 @@ node('Server_Group_1') {
 
             print "[Stage] : ${env.NODE_ENV}"
 
-            sh "echo                                                    > ${env.JOB_NAME}.log"
-            sh "echo [Stage: ${env.NODE_ENV} - Node: ${env.NODE_NAME}] >> ${env.JOB_NAME}.log" 
-            sh "echo ------------------------------------------------- >> ${env.JOB_NAME}.log"
-	    sh "echo                                                   >> ${env.JOB_NAME}.log"
+            sh "echo                                                       > ${env.JOB_NAME}.log"
+            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 
 	    checkout scm
 
@@ -27,11 +26,11 @@ node('Server_Group_1') {
 
             print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> ${env.JOB_NAME}.log"
-            sh "echo [Stage: ${env.NODE_ENV} - Node: ${env.NODE_NAME}] >> ${env.JOB_NAME}.log" 
-            sh "echo ------------------------------------------------- >> ${env.JOB_NAME}.log"
-	    sh "echo                                                  >> ${env.JOB_NAME}.log"
-            sh "ls -lrt ${WORKSPACE}                                  >> ${env.JOB_NAME}.log"
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+
+	    sh "ls -lrt ${WORKSPACE}                                      >> ${env.JOB_NAME}.log"
 
        }
 
@@ -41,11 +40,11 @@ node('Server_Group_1') {
 
             print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> ${env.JOB_NAME}.log"
-            sh "echo [Stage: ${env.NODE_ENV} - Node: ${env.NODE_NAME}] >> ${env.JOB_NAME}.log" 
-            sh "echo ------------------------------------------------- >> ${env.JOB_NAME}.log"
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 
-	    sh "echo Building the code..                              >> ${env.JOB_NAME}.log"
+	    sh "echo Building the code..                                  >> ${env.JOB_NAME}.log"
 
             sh 'export MAVEN_HOME=/opt/maven; cd ${WORKSPACE}; ${MAVEN_HOME}/bin/mvn clean install'
 
@@ -57,11 +56,10 @@ node('Server_Group_1') {
 
             print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> ${env.JOB_NAME}.log"
-            sh "echo [Stage: ${env.NODE_ENV} - Node: ${env.NODE_NAME}] >> ${env.JOB_NAME}.log" 
-            sh "echo ------------------------------------------------- >> ${env.JOB_NAME}.log"
-	    sh "echo                                                  >> ${env.JOB_NAME}.log"
-	    sh "Copy the Jenkinsfile to Deployment server....         >> ${env.JOB_NAME}.log"
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+	    sh "Copy the Jenkinsfile to Deployment server....             >> ${env.JOB_NAME}.log"
 
 	    sh 'rsync ${env.WORKARERA}/Jenkinsfile root@15.213.52.106:/tmp'
 
@@ -73,11 +71,10 @@ node('Server_Group_1') {
 
             print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> ${env.JOB_NAME}.log"
-            sh "echo [Stage: ${env.NODE_ENV} - Node: ${env.NODE_NAME}] >> ${env.JOB_NAME}.log" 
-            sh "echo ------------------------------------------------- >> ${env.JOB_NAME}.log"
-	    sh "echo                                                  >> ${env.JOB_NAME}.log"
-	    sh "Cleaning up the files....                             >> ${env.JOB_NAME}.log"
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+	    sh "Cleaning up the files....                                 >> ${env.JOB_NAME}.log"
 
 	    mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
