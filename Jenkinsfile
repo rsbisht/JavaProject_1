@@ -16,6 +16,8 @@ node('Server_Group_1') {
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 
+           //  git url: ' https://github.com/rsbisht/JavaProject_1.git', branch: "master"
+
 	    checkout scm
 
        }
@@ -64,7 +66,7 @@ node('Server_Group_1') {
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 	    sh "Copy the Jenkinsfile to Deployment server....             >> ${env.JOB_NAME}.log"
 
-	    sh 'scp ${env.WORKARERA}/Jenkinsfile root@15.213.52.106:/tmp'
+	    sh 'scp -r ${env.WORKARERA}/Jenkinsfile root@15.213.52.106:/tmp'
 
        }
 
