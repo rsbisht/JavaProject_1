@@ -15,7 +15,7 @@ node('Server_Group_1') {
             sh "echo                                                       > ${env.JOB_NAME}.log"
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-
+            sh "env                                                       >> ${env.JOB_NAME}.log"
            //  git url: ' https://github.com/rsbisht/JavaProject_1.git', branch: "master"
 
 	    checkout scm
@@ -86,9 +86,7 @@ node('Server_Group_1') {
 	    mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
                       to: 'rsbisht@hpe.com',
-                 // subject: "Job: ${env.JOB_NAME}, Build#: ${env.BUILD_ID}: Build Successful",
-                 // subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}",
-                  subject: "Jenkins:: Job: ${env.JOB_NAME} - Build#: ${env.BUILD_NUMBER} - Build Status: ${currentBuild.result}",
+                 subject: "Jenkins:: Job Name: ${env.JOB_NAME} - Build#: ${env.BUILD_NUMBER} :: Status: ${currentBuild.result}",
 	            body: "Project Build Successful. You can find the details here: ${env.BUILD_URL}"
        }
 
@@ -100,9 +98,7 @@ node('Server_Group_1') {
             mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
                       to: 'rsbisht@hpe.com',
-                 // subject: "Job: ${env.JOB_NAME}, Build#: ${env.BUILD_ID}: Project Build Failed !",
-                 // subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}",
-                  subject: "Jenkins:: Job: ${env.JOB_NAME} - Build#: ${env.BUILD_NUMBER} - Build Status: ${currentBuild.result}",
+                 subject: "Jenkins:: Job Name: ${env.JOB_NAME} - Build#: ${env.BUILD_NUMBER} :: Status: ${currentBuild.result}",
 	            body: "Project Build Failed ! You can find the error is here: ${env.BUILD_URL}" 
 
         throw err
