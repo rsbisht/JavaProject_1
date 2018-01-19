@@ -17,7 +17,7 @@ node('Server_Group_1') {
             sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
 	    sh "echo                                                  >> ${env.JOB_NAME}.log"
 	    sh "echo 'Checking out the code from SCM...'              >> ${env.JOB_NAME}.log"
-            sh "echo Hostname: hostname                               >> ${env.JOB_NAME}.log"
+	    sh "echo Hostname: ${env.NODE_NAME}                       >> ${env.JOB_NAME}.log"
             sh "echo                                                  >> ${env.JOB_NAME}.log"
             sh "echo PATH: ${env.PATH}                                >> ${env.JOB_NAME}.log"
 
@@ -48,9 +48,7 @@ node('Server_Group_1') {
             sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
 	    sh "echo Building the code..                              >> ${env.JOB_NAME}.log"
 
-            sh 'export MAVEN_HOME=/opt/maven'
-            sh 'cd ${WORKSPACE}'
-	    sh '${MAVEN_HOME}/bin/mvn clean install'
+            sh 'export MAVEN_HOME=/opt/maven'; cd ${WORKSPACE}; ${MAVEN_HOME}/bin/mvn clean install'
        }
 
        stage('Deploy'){
