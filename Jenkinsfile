@@ -48,7 +48,7 @@ node('Server_Group_1') {
             sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
 	    sh "echo Building the code..                              >> ${env.JOB_NAME}.log"
 
-            sh 'export MAVEN_HOME=/opt/maven'; cd ${env.WORKSPACE}; ${MAVEN_HOME}/bin/mvn clean install'
+            sh 'export MAVEN_HOME=/opt/maven; cd ${env.WORKSPACE}; ${MAVEN_HOME}/bin/mvn clean install'
        }
 
        stage('Deploy'){
