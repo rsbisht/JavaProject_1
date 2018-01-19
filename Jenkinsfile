@@ -13,7 +13,7 @@ node('Server_Group_1') {
             print "[Stage] : ${env.NODE_ENV}"
 
             sh "echo                                                       > ${env.JOB_NAME}.log"
-            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+            sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 
 	    checkout scm
@@ -27,7 +27,7 @@ node('Server_Group_1') {
             print "[Stage] : ${env.NODE_ENV}"
 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+            sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 
 	    sh "ls -lrt ${WORKSPACE}                                      >> ${env.JOB_NAME}.log"
@@ -41,7 +41,7 @@ node('Server_Group_1') {
             print "[Stage] : ${env.NODE_ENV}"
 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+            sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 
 	    sh "echo Building the code..                                  >> ${env.JOB_NAME}.log"
@@ -57,7 +57,7 @@ node('Server_Group_1') {
             print "[Stage] : ${env.NODE_ENV}"
 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+            sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 	    sh "Copy the Jenkinsfile to Deployment server....             >> ${env.JOB_NAME}.log"
 
@@ -72,7 +72,7 @@ node('Server_Group_1') {
             print "[Stage] : ${env.NODE_ENV}"
 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-            sh "echo [ Stage: ${env.NODE_ENV} ] => Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+            sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 	    sh "Cleaning up the files....                                 >> ${env.JOB_NAME}.log"
 
