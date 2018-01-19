@@ -67,7 +67,7 @@ node('Server_Group_1') {
 	    sh "Copy the Jenkinsfile to Deployment server....             >> ${env.JOB_NAME}.log"
 
 	    // sh '/usr/bin/scp -r ${env.WORKARERA}/Jenkinsfile root@15.213.52.106:/tmp'
-	     sh 'cp ${WORKSPACE}/Jenkinsfile ${WORKSPACE}/Jenkinsfile.COPY'
+	     sh "cd ${WORKSPACE}; cp Jenkinsfile Jenkinsfile.COPY"
 
        }
 
