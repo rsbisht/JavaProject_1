@@ -64,7 +64,7 @@ node('Server_Group_1') {
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
 	    sh "Copy the Jenkinsfile to Deployment server....             >> ${env.JOB_NAME}.log"
 
-	    sh "rsync ${env.WORKARERA}/Jenkinsfile root@15.213.52.106:/tmp"
+	    sh "scp ${env.WORKARERA}/Jenkinsfile root@15.213.52.106:/tmp"
 
        }
 
