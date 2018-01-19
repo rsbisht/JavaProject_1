@@ -86,7 +86,8 @@ node('Server_Group_1') {
 	    mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
                       to: 'rsbisht@hpe.com',
-                 subject: "Job: ${env.JOB_NAME}, Build#: ${env.BUILD_ID}: Build Successful",
+                 // subject: "Job: ${env.JOB_NAME}, Build#: ${env.BUILD_ID}: Build Successful",
+                 subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}",
 	            body: "Project Build Successful. You can find the details here: ${env.BUILD_URL}"
        }
 
@@ -98,7 +99,8 @@ node('Server_Group_1') {
             mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
                       to: 'rsbisht@hpe.com',
-                 subject: "Job: ${env.JOB_NAME}, Build#: ${env.BUILD_ID}: Project Build Failed !",
+                 // subject: "Job: ${env.JOB_NAME}, Build#: ${env.BUILD_ID}: Project Build Failed !",
+                 subject: "${env.JOB_NAME} - Build# ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}",
 	            body: "Project Build Failed ! You can find the error is here: ${env.BUILD_URL}" 
 
         throw err
