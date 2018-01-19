@@ -97,9 +97,7 @@ node('Server_Group_1') {
                  replyTo: 'rsbisht@hpe.com',
                       to: 'rsbisht@hpe.com',
                  subject: 'Project Build Failed !',
-	            body: "Project Build Failed !
-		           You can find the error is here: ${env.BUILD_URL}" 
-
+	            body: "Project Build Failed You can find the error is here: ${env.BUILD_URL}" 
         throw err
     }
 
