@@ -10,16 +10,16 @@ node('Server_Group_1') {
 
             env.NODE_ENV = "Checkout"
 
-	    print "Environment will be : ${env.NODE_ENV}"
+            print "[Stage] : ${env.NODE_ENV}"
 
-            sh "echo                                                   > Jenkin_Pipeline_Example_01.log"
-            sh "echo [Stage: ${env.NODE_ENV}]                         >> Jenkin_Pipeline_Example_01.log" 
-            sh "echo ------------------------                         >> Jenkin_Pipeline_Example_01.log"
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-	    sh "echo 'Checking out the code from SCM...'              >> Jenkin_Pipeline_Example_01.log"
-            sh "echo Hostname: hostname                               >> Jenkin_Pipeline_Example_01.log"
-            sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-            sh "echo PATH: ${env.PATH}                                >> Jenkin_Pipeline_Example_01.log"
+            sh "echo                                                   > ${env.JOB_NAME}.log"
+            sh "echo [Stage: ${env.NODE_ENV}]                         >> ${env.JOB_NAME}.log" 
+            sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+	    sh "echo 'Checking out the code from SCM...'              >> ${env.JOB_NAME}.log"
+            sh "echo Hostname: hostname                               >> ${env.JOB_NAME}.log"
+            sh "echo                                                  >> ${env.JOB_NAME}.log"
+            sh "echo PATH: ${env.PATH}                                >> ${env.JOB_NAME}.log"
 
        }
 
@@ -27,13 +27,13 @@ node('Server_Group_1') {
 
             env.NODE_ENV = "Test"
 
-            print "Environment will be : ${env.NODE_ENV}"
+            print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-            sh "echo [Stage: ${env.NODE_ENV}]                         >> Jenkin_Pipeline_Example_01.log" 
-            sh "echo ------------------------                         >> Jenkin_Pipeline_Example_01.log"
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-            sh "echo ls ${WORKSPACE}/target                           >> Jenkin_Pipeline_Example_01.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+            sh "echo [Stage: ${env.NODE_ENV}]                         >> ${env.JOB_NAME}.log" 
+            sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+            sh "echo ls ${WORKSPACE}/target                           >> ${env.JOB_NAME}.log"
 
        }
 
@@ -41,12 +41,12 @@ node('Server_Group_1') {
 
             env.NODE_ENV = "Build"
 
-            print "Environment will be : ${env.NODE_ENV}"
+            print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-            sh "echo [Stage: ${env.NODE_ENV}]                         >> Jenkin_Pipeline_Example_01.log" 
-            sh "echo ------------------------                         >> Jenkin_Pipeline_Example_01.log"
-	    sh "echo Building the code..                              >> Jenkin_Pipeline_Example_01.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+            sh "echo [Stage: ${env.NODE_ENV}]                         >> ${env.JOB_NAME}.log" 
+            sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
+	    sh "echo Building the code..                              >> ${env.JOB_NAME}.log"
 
             sh 'export MAVEN_HOME=/opt/maven'
             sh 'cd ${WORKSPACE}'
@@ -57,13 +57,13 @@ node('Server_Group_1') {
 
             env.NODE_ENV = "Deploy"
 
-            print "Environment will be : ${env.NODE_ENV}"
+            print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-            sh "echo [Stage: ${env.NODE_ENV}]                         >> Jenkin_Pipeline_Example_01.log" 
-            sh "echo ------------------------                         >> Jenkin_Pipeline_Example_01.log"
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-	    sh "Copy the Jenkinsfile to Deployment server....         >> Jenkin_Pipeline_Example_01.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+            sh "echo [Stage: ${env.NODE_ENV}]                         >> ${env.JOB_NAME}.log" 
+            sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+	    sh "Copy the Jenkinsfile to Deployment server....         >> ${env.JOB_NAME}.log"
 
 	    sh 'rsync ${env.WORKARERA}/Jenkinsfile root@15.213.52.106:/tmp'
 
@@ -73,13 +73,13 @@ node('Server_Group_1') {
 
             env.NODE_ENV = "Deploy"
 
-            print "Environment will be : ${env.NODE_ENV}"
+            print "[Stage] : ${env.NODE_ENV}"
 
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-            sh "echo [Stage: ${env.NODE_ENV}]                         >> Jenkin_Pipeline_Example_01.log" 
-            sh "echo ------------------------                         >> Jenkin_Pipeline_Example_01.log"
-	    sh "echo                                                  >> Jenkin_Pipeline_Example_01.log"
-	    sh "Cleaning up the files....                             >> Jenkin_Pipeline_Example_01.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+            sh "echo [Stage: ${env.NODE_ENV}]                         >> ${env.JOB_NAME}.log" 
+            sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
+	    sh "echo                                                  >> ${env.JOB_NAME}.log"
+	    sh "Cleaning up the files....                             >> ${env.JOB_NAME}.log"
 
 	    mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
@@ -97,7 +97,8 @@ node('Server_Group_1') {
                  replyTo: 'rsbisht@hpe.com',
                       to: 'rsbisht@hpe.com',
                  subject: 'Project Build Failed !',
-	            body: "Project Build Failed. You can find the error is here: ${env.BUILD_URL}" 
+	            body: "Project Build Failed !
+		           You can find the error is here: ${env.BUILD_URL}" 
 
         throw err
     }
