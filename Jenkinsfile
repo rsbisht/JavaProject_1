@@ -12,6 +12,8 @@ node('Server_Group_1') {
 
             print "[Stage] : ${env.NODE_ENV}"
 
+	    checkout scm
+		    
             sh "echo                                                   > ${env.JOB_NAME}.log"
             sh "echo [Stage: ${env.NODE_ENV}]                         >> ${env.JOB_NAME}.log" 
             sh "echo ------------------------                         >> ${env.JOB_NAME}.log"
