@@ -68,8 +68,7 @@ node('Server_Group_1') {
 
             print "scp -r ${WORKSPACE}/Jenkinsfile root@15.213.52.106:/tmp"
 	       
-	    sh "cd ${WORKSPACE}; cp Jenkinsfile Jenkinsfile.COPY"
-	    sh 'scp -r ${WORKSPACE}/Jenkinsfile.* root@15.213.52.106:/tmp'
+	    sh 'scp -r ${WORKSPACE}/Jenkinsfile root@15.213.52.106:/tmp'
 
        }
 
@@ -82,13 +81,13 @@ node('Server_Group_1') {
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-	    sh "Cleaning up the files....                                 >> ${env.JOB_NAME}.log"
+	    sh "echo Cleaning up the files....                            >> ${env.JOB_NAME}.log"
 
 	    mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
                       to: 'rsbisht@hpe.com',
                  subject: 'Project Build Successful',
-	            body: 'Project Build Successful' 
+	            body: 'Project Build Successful. You can find the details here: ${env.BUILD_URL}' 
        }
 
     }
