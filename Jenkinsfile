@@ -1,6 +1,7 @@
 #!groovy
 
-node('Server_Group_1') {
+// node('Server_Group_1') {
+   node {
 
     currentBuild.result = "SUCCESS"
 
