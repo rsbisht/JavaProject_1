@@ -15,7 +15,7 @@
             sh "echo                                                       > ${env.JOB_NAME}.log"
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-            sh "Checking out the code...                                  >> ${env.JOB_NAME}.log"
+            sh "echo Checking out the code...                             >> ${env.JOB_NAME}.log"
 
             checkout scm
        }
