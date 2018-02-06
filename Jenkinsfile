@@ -46,7 +46,7 @@
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
  	    sh "echo Testing the code...                                  >> ${env.JOB_NAME}.log"
 
-	    sh "javac SimpleForLoop.java"                                 >> ${env.JOB_NAME}.log"
+	    sh "javac SimpleForLoop.java                                  >> ${env.JOB_NAME}.log"
 	    sh "ls -lrt ${WORKSPACE}                                      >> ${env.JOB_NAME}.log"
 	    sh "java SimpleForLoop                                        >> ${env.JOB_NAME}.log"
        }
