@@ -15,9 +15,8 @@
 
             sh "echo                                                       > ${env.JOB_NAME}.log"
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
-	        sh "echo                                                      >> ${env.JOB_NAME}.log"
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
             sh "env                                                       >> ${env.JOB_NAME}.log"
-           //  git url: ' https://github.com/rsbisht/JavaProject_1.git', branch: "master"
 
 	    checkout scm
 
@@ -29,11 +28,10 @@
 
             print "[Stage] : ${env.NODE_ENV}"
 
-	        sh "echo                                                      >> ${env.JOB_NAME}.log"
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
-	        sh "echo                                                      >> ${env.JOB_NAME}.log"
-	        sh "ls -lrt ${WORKSPACE}                                      >> ${env.JOB_NAME}.log"
-
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+	    sh "ls -lrt ${WORKSPACE}                                      >> ${env.JOB_NAME}.log"
        }
 
        stage('Build'){
@@ -42,18 +40,34 @@
 
             print "[Stage] : ${env.NODE_ENV}"
 
-   	        sh "echo                                                      >> ${env.JOB_NAME}.log"
+   	    sh "echo                                                      >> ${env.JOB_NAME}.log"
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
-	        sh "echo                                                      >> ${env.JOB_NAME}.log"
- 	        sh "echo Building the code..                                  >> ${env.JOB_NAME}.log"
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+ 	    sh "echo Building the code..                                  >> ${env.JOB_NAME}.log"
 
             // sh 'export MAVEN_HOME=/opt/maven; cd ${WORKSPACE}; ${MAVEN_HOME}/bin/mvn clean install'
 
 	    sh "javac SimpleForLoop.java"
 	    sh "java SimpleForLoop                                        >> ${env.JOB_NAME}.log"
-
        }
 
+       stage('Test'){
+
+            env.NODE_ENV = "Test"
+
+            print "[Stage] : ${env.NODE_ENV}"
+
+   	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+            sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
+	    sh "echo                                                      >> ${env.JOB_NAME}.log"
+ 	    sh "echo Testing the code...                                  >> ${env.JOB_NAME}.log"
+
+	    sh "javac SimpleForLoop.java"
+	    sh "java SimpleForLoop                                        >> ${env.JOB_NAME}.log"
+       }
+
+	    
+	    
        stage('Deploy'){
 
             env.NODE_ENV = "Deploy"
