@@ -65,9 +65,11 @@
 	        sh "echo                                                      >> ${env.JOB_NAME}.log"
 	        sh "echo Copy the Jenkinsfile to Deployment server....        >> ${env.JOB_NAME}.log"
 
-            print "scp -r ${WORKSPACE}/Jenkinsfile root@15.213.52.106:/tmp"
-	       
-	        sh "scp -r ${WORKSPACE}/Jenkinsfile root@15.213.52.106:/tmp"
+            // print "scp -r ${WORKSPACE}/Jenkinsfile root@15.213.52.106:/tmp"
+	    //  sh "scp -r ${WORKSPACE}/Jenkinsfile root@15.213.52.106:/tmp"
+
+	        sh "rm -f /tmp/Jenkinsfile; cp -r ${WORKSPACE}/Jenkinsfile /tmp"
+	        sh "rm -f /tmp/SimpleForLoop.class; cp -r ${WORKSPACE}/SimpleForLoop.class /tmp"
 
        }
 
