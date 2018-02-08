@@ -68,15 +68,15 @@
 	    sh "rm -f /tmp/SimpleForLoop.class; cp -r ${WORKSPACE}/SimpleForLoop.class /tmp"
        }
 
-       stage('Cleanup'){
+       stage('Notify'){
 
-            env.NODE_ENV = "Deploy"
+            env.NODE_ENV = "Notify"
             print "[Stage] : ${env.NODE_ENV}"
 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
             sh "echo [ Stage: ${env.NODE_ENV} ] :: Node: ${env.NODE_NAME} >> ${env.JOB_NAME}.log" 
 	    sh "echo                                                      >> ${env.JOB_NAME}.log"
-	    sh "echo Cleaning up the files...                             >> ${env.JOB_NAME}.log"
+	    sh "echo Sending notification...                              >> ${env.JOB_NAME}.log"
 
 	    mail    from: 'rsbisht@hpe.com',
                  replyTo: 'rsbisht@hpe.com',
